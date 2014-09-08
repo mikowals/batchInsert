@@ -1,0 +1,44 @@
+<head>
+  <title>Batch Insert Test</title>
+</head>
+
+<body> 
+  <br/>
+  {{> connectionInfo}}
+  <div >
+   {{> insert1}}
+  </div>
+  <br/>
+  
+  <div >
+    {{> insert2}}
+  </div>
+  <br/><br/>
+  <h3>Server Facts</h3>
+  {{> serverFacts}}
+</body>
+
+<template name='connectionInfo'>
+  {{connections.count}} clients connected.
+</template>
+
+<template name="insert1">
+  <h2>Loop</h2>
+  {{>timeData loopTime}}
+  <button id='insert1'>do insert with loop</button><br/>
+  {{docs.count}}<br/>
+
+</template>
+
+<template name="insert2">
+  <h2>Batch</h2>
+  {{>timeData batchTime}}
+  <button id='insert2'>do insert with batch</button><br/>
+  {{docs.count}}<br/>
+</template>
+
+<template name='timeData'>
+  totalTime: {{totalTime}}ms<br/>  
+  calls:  {{calls}}<br/>
+  average: {{average}}ms<br/>
+</template>

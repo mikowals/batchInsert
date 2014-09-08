@@ -3,9 +3,9 @@ Meteor.subscribe( 'allDocs');
 function create1000Docs(){
   var userData = connections.find().fetch();
   var count = 0;
-  return _.range(1000).map( function( num ){
-    var rand = _.random( 10000000000000);
-    var doc =  {_id: Random.id(), name: num+'name'+rand, someData: rand, connectionId:userData[count].connectionId };
+  return _.range(20).map( function( num ){
+    var rand = Random.id();
+    var doc =  { name: num+'name'+rand, someData: rand, connectionId:userData[count].connectionId };
     count ++;
     if ( count >= userData.length ) count = 0;
     return doc;
@@ -32,7 +32,9 @@ Template.insert1.helpers({
 
 Template.insert2.events({
   'click #insert2': function() {
-    Meteor.call( 'batchInsert', create1000Docs());
+    var ids = Meteor.call( 'batchInsert', create1000Docs(), 'col2', function(err, res){
+      console.log( 'server Id: ', err || res[0] );
+    });
   }
 });
 
@@ -44,4 +46,3 @@ Template.insert2.helpers({
     return batchTime.findOne();
   }
 });
-

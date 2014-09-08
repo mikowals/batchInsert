@@ -2,14 +2,14 @@
   <title>Batch Insert Test</title>
 </head>
 
-<body> 
+<body>
   <br/>
   {{> connectionInfo}}
   <div >
    {{> insert1}}
   </div>
   <br/>
-  
+
   <div >
     {{> insert2}}
   </div>
@@ -26,8 +26,7 @@
   <h2>Loop</h2>
   {{>timeData loopTime}}
   <button id='insert1'>do insert with loop</button><br/>
-  {{docs.count}}<br/>
-
+  count : {{docs.count}}<br/>
 </template>
 
 <template name="insert2">
@@ -38,7 +37,7 @@
 </template>
 
 <template name='timeData'>
-  totalTime: {{totalTime}}ms<br/>  
+  totalTime: {{totalTime}}ms<br/>
   calls:  {{calls}}<br/>
   average: {{average}}ms<br/>
 </template>

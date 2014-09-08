@@ -1,5 +1,5 @@
 Meteor.publish( 'allDocs', function(){
-  return [col.find({connectionId: this.connection.id}), col2.find({connectionId: this.connection.id},{_disableOplog: true}), batchTime.find("1"), loopTime.find("1"), connections.find()];
+  return [col.find({connectionId: this.connection.id}), col2.find({connectionId: this.connection.id}), batchTime.find("1"), loopTime.find("1"), connections.find()];
 });
 
 function resetCollections(){
